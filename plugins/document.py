@@ -9,6 +9,7 @@ import os
 import slackbot_settings
 
 prefix = os.path.join(os.getcwd(), 'static')
+channel_name = 'chatbot'
 
 
 @respond_to('体育祭の資料')
@@ -24,9 +25,13 @@ def reply_hello(message):
             file = os.path.join(prefix, '体育祭')
             slacker = Slacker(slackbot_settings.API_TOKEN)
             slacker.files.upload(file_=file+'/'+role +
-                                 '/Readme.md', channels='a')
+                                 '/Readme.md', channels=channel_name)
             # message.send(reply_message(role))
         elif role == '':
+            file = os.path.join(prefix, '体育祭')
+            slacker = Slacker(slackbot_settings.API_TOKEN)
+            slacker.files.upload(file_=file+'/'+'体育祭.md',
+                                 channels=channel_name)
             message.reply('体育祭の資料です')
 
 
