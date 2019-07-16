@@ -12,6 +12,7 @@ prefix = os.path.join(os.getcwd(), 'static')
 channel_name = 'chatbot'
 
 
+@respond_to('運動会')
 @respond_to('体育祭の資料')
 def reply_hello(message):
     user = message.body['user']
